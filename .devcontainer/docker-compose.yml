@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  vscode:
+    build:
+      context: ..
+      target: dev
+    user: pn
+    ports:
+      - "127.0.0.1:${VITE_PORT:-5173}:5173"
+      - "127.0.0.1:${FASTAPI_PORT:-8080}:8000"
+    volumes:
+      - ..:/home/pn/app
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  docs:
+    build:
+      context: ..
+      dockerfile: Dockerfile.mkdocs
+    ports:
+      - "127.0.0.1:${MKDOCS_PORT:-8081}:8000"
+    volumes:
+      - ..:/docs

@@ -1,0 +1,12 @@
+ARG BASE_IMAGE=squidfunk/mkdocs-material:latest
+
+FROM $BASE_IMAGE
+ENV PYTHONDONTWRITEBYTECODE=1
+RUN pip install \
+    mkdocs-awesome-pages-plugin \
+    # mkdocs-charts-plugin \
+    # mkdocs-glightbox \
+    mkdocs-macros-plugin \
+    mkdocs-mermaid2-plugin \
+    mkdocs-table-reader-plugin  \
+    mkdocstrings
